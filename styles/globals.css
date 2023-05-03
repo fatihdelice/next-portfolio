@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./syntax-highlighting.css";
+
+@layer utilities {
+  .snipHover {
+    position: relative;
+    opacity: 1;
+  }
+  .snipHover:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    opacity: 1;
+    background: #181818;
+    z-index: 1;
+    transform: rotate3d(1, 0, 0, 90deg);
+    /* transform-origin: middle; */
+    transition: all;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.41, 0.07, 0.5, 0.94);
+    mix-blend-mode: exclusion;
+    filter: invert(1);
+  }
+
+  .snipHover:hover::before {
+    transform: rotate3d(1, 0, 0, 0deg);
+    opacity: 1;
+  }
+
+  .beforered {
+    @apply before:absolute before:rounded-full before:-left-[3.11rem] before:bottom-0 before:shadow-[0px_0px_6px_rgb(222,45,45)] before:top-0 before:w-1 before:h-full before:bg-[rgb(222,45,45)];
+  }
+
+  .titles {
+    @apply text-4xl font-bold relative mb-4 first-letter:capitalize leading-5;
+  }
+
+  .pTag {
+    @apply py-3 text-lg leading-normal text-slate-600 dark:text-slate-300;
+  }
+
+  p a {
+    @apply text-black underline dark:decoration-gray-800 decoration-gray-300 hover:decoration-black dark:hover:decoration-white underline-offset-4 px-[2px] py-[1px] rounded-sm transition-all dark:text-white cursor-ne-resize;
+  }
+  /* 
+  p a {
+    @apply text-red-600  hover:text-red-100 hover:bg-red-500 px-[2px] py-[1px] rounded-sm transition-all dark:text-red-600 dark:drop-shadow-[0px_0px_6px_rgb(222,45,45)] dark:hover:text-red-100 dark:hover:bg-red-600 cursor-ne-resize;
+  } 
+  */
+
+  .headerHover {
+    @apply bg-transparent  py-[6px] px-2 rounded-md;
+    @apply hover:bg-slate-400/20 transition-all ease-in;
+  }
+
+  .profileCard {
+    @apply border-2 p-4 mb-6  row-span-2 relative overflow-hidden border-neutral-400/20 rounded-xl;
+  }
+  .repoCard {
+    @apply border p-4 pb-9 relative overflow-hidden dark:border-neutral-700/50 border-neutral-400/20 rounded-xl;
+  }
+}
+
+ul {
+  @apply list-disc;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+  font-feature-settings: normal;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  tab-size: 4;
+  text-rendering: optimizeLegibility;
+  scroll-padding-top: 100px;
+}
+
+.innerShadow {
+  box-shadow: 0 -7px 11px rgba(33, 33, 33, 0.1) inset,
+    0 7px 11px rgba(227, 227, 227, 0.1) inset;
+}
